@@ -17,6 +17,8 @@ const HEALTH_SOURCE = 'https://i.imgur.com/ThdI5fE.png';
 const POWER_UP_WIDTH = 50;
 const POWER_UP_HEIGHT = 50;
 const GAME_IS_OVER_Y = canvas.height-50;
+const MAX_ENEMY_SPEED = 3;
+const MIN_ENEMY_SPEED = .7;
 const GAME_IS_OVER_X = 30;
 let gameIsOver = false;
 let timer = 0;
@@ -170,7 +172,7 @@ function randomPlace(){
 }
 
 function randomSpeed() {
-  return Math.random()*(5-2)+2;
+  return Math.random()*(MAX_ENEMY_SPEED-MIN_ENEMY_SPEED)+MIN_ENEMY_SPEED;
 }
 
 function updateScene() {
