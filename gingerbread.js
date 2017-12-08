@@ -23,6 +23,7 @@ const GAME_IS_OVER_X = 30;
 let gameIsOver = false;
 let timer = 0;
 let score = 0;
+document.getElementById('score').innerHTML= score;
 const TIME_UNTIL_SPAWN = 500;
 let healthExists = false;
 
