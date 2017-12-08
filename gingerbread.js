@@ -9,7 +9,6 @@ const PLAYER_STARTING_Y = 150;
 const PLAYER_WIDTH = 67;
 const PLAYER_HEIGHT = 55;
 const ENEMY_SOURCE = "https://i.imgur.com/YapzdhJ.png";
-const ENEMY_SPEED = Math.random()*(5-2)+2;
 const ENEMY_STARTING_X = 80;
 const ENEMY_STARTING_Y = 200;
 const ENEMY_WIDTH = 60;
@@ -132,7 +131,7 @@ class Enemy extends Sprite {
 }
 
 let enemies = [
-  new Enemy(ENEMY_SOURCE, ENEMY_STARTING_X, ENEMY_STARTING_Y, ENEMY_SPEED, ENEMY_WIDTH, ENEMY_HEIGHT)
+  new Enemy(ENEMY_SOURCE, ENEMY_STARTING_X, ENEMY_STARTING_Y, randomSpeed(), ENEMY_WIDTH, ENEMY_HEIGHT)
 ];
 
 class Health extends Sprite {
@@ -190,7 +189,7 @@ function updateScene() {
     player.y = canvas.height - player.imgHeight;
   }
   if (timer % TIME_UNTIL_SPAWN === 0) {
-    enemies.push(new Enemy(ENEMY_SOURCE, ENEMY_STARTING_X, ENEMY_STARTING_Y, ENEMY_SPEED, ENEMY_WIDTH, ENEMY_HEIGHT));
+    enemies.push(new Enemy(ENEMY_SOURCE, ENEMY_STARTING_X, ENEMY_STARTING_Y, randomSpeed(), ENEMY_WIDTH, ENEMY_HEIGHT));
     score += 2;
     document.getElementById('score').innerHTML= score;
     if (enemies.length%2 === 0) {
