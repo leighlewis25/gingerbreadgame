@@ -12,8 +12,12 @@ Move your mouse away from the hungry people to keep the gingerbread man safe. Ea
 
 Sources for photographs used:
 
-background photo: 
-Player (Gingerbread Man): 
-Enemy (Hungry People):
-Santa Hat:
-Game Over:
+background photo:  //http://clipartix.com/winter-clipart-image-40921/
+
+Player (Gingerbread Man): https://clipartion.com/free-clipart-9063/
+
+Enemy (Hungry People): https://www.flaticon.com/free-icon/hungry-man_76692
+
+Santa Hat:http://cliparting.com/free-santa-hat-clipart-12679/
+
+Game Over: http://www.powerpointhintergrund.com/ppt-image/game-over-png-1406.html
