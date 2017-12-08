@@ -170,6 +170,10 @@ function randomPlace(){
   return Math.random()*canvas.width;
 }
 
+function randomSpeed() {
+  return Math.random()*(5-2)+2;
+}
+
 function updateScene() {
   player.moveToward(mouse, player.speed);
   enemies.forEach(enemy => enemy.moveToward(player, enemy.speed));
