@@ -9,7 +9,7 @@ const PLAYER_STARTING_Y = 150;
 const PLAYER_WIDTH = 67;
 const PLAYER_HEIGHT = 55;
 const ENEMY_SOURCE = "https://i.imgur.com/YapzdhJ.png";
-const ENEMY_SPEED = Math.random()*(3-.75)+.75;
+const ENEMY_SPEED = Math.random()*(5-2)+2;
 const ENEMY_STARTING_X = 80;
 const ENEMY_STARTING_Y = 200;
 const ENEMY_WIDTH = 60;
@@ -31,9 +31,6 @@ snowyImage.src = "https://i.imgur.com/2z59iGt.jpg";
 let gameOverImg = new Image();
 gameOverImg.src = "https://i.imgur.com/ITiY5vs.png";
 
-let santaHatImg = new Image();
-santaHatImg.src = 'https://i.imgur.com/ThdI5fE.png';
-
 
 function startGame() {
   if (progressBar.value === 0) {
@@ -41,6 +38,7 @@ function startGame() {
     timer = 0;
     score = 0;
     document.getElementById('score').innerHTML= score;
+    backgroundSong.play();
     gameIsOver = false;
     Object.assign(player, {x: canvas.width / 2, y: canvas.height / 2});
     requestAnimationFrame(drawScene);
@@ -59,13 +57,9 @@ function haveCollided(sprite1, sprite2) {
   );
 }
 
-function randomPlace(){
-  return Math.random()*canvas.width;
-}
-
 class Sprite {
   draw() {
-    let img = new Image();
+    var img = new Image();
     img.src = this.source;
     ctx.drawImage(img, this.x, this.y, this.imgWidth, this.imgHeight);
   }
@@ -123,20 +117,6 @@ let player = new Player(
   PLAYER_HEIGHT
 );
 
-class Health extends Sprite {
-  constructor(source, x, y, imgWidth, imgHeight) {
-    super();
-    Object.assign(this, {
-      source,
-      x,
-      y,
-      imgWidth,
-      imgHeight
-    });
-  }
-}
-
-
 class Enemy extends Sprite {
   constructor(source, x, y, speed, imgWidth, imgHeight) {
     super();
@@ -155,6 +135,19 @@ let enemies = [
   new Enemy(ENEMY_SOURCE, ENEMY_STARTING_X, ENEMY_STARTING_Y, ENEMY_SPEED, ENEMY_WIDTH, ENEMY_HEIGHT)
 ];
 
+class Health extends Sprite {
+  constructor(source, x, y, imgWidth, imgHeight) {
+    super();
+    Object.assign(this, {
+      source,
+      x,
+      y,
+      imgWidth,
+      imgHeight
+    });
+  }
+}
+
 let newHealth = new Health(HEALTH_SOURCE,randomPlace(), randomPlace(), POWER_UP_WIDTH, POWER_UP_HEIGHT
 );
 
@@ -171,6 +164,10 @@ function updateMouse(event) {
   } = canvas.getBoundingClientRect();
   mouse.x = event.clientX - left;
   mouse.y = event.clientY - top;
+}
+
+function randomPlace(){
+  return Math.random()*canvas.width;
 }
 
 function updateScene() {
@@ -200,8 +197,7 @@ function updateScene() {
     progressBar.value +=2;
     healthExists = false;
     }
-
-
+  
   enemies.forEach(enemy => {
     if (haveCollided(enemy, player)) {
       progressBar.value -= 1;
@@ -235,10 +231,10 @@ function updateScene() {
   function drawScene() {
     clearBackground();
     player.draw();
-    enemies.forEach(enemy => enemy.draw());
     if (healthExists === true) {
       newHealth.draw();
     }
+    enemies.forEach(enemy => enemy.draw());
     if (gameIsOver) {
       gameOver();
       ctx.font = '30px Berkshire Swash, cursive';
