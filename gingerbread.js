@@ -60,7 +60,7 @@ function haveCollided(sprite1, sprite2) {
 
 class Sprite {
   draw() {
-    var img = new Image();
+    let img = new Image();
     img.src = this.source;
     ctx.drawImage(img, this.x, this.y, this.imgWidth, this.imgHeight);
   }
