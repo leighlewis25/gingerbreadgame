@@ -188,7 +188,7 @@ function updateScene() {
   }
   if (timer % TIME_UNTIL_SPAWN === 0) {
     enemies.push(new Enemy(ENEMY_SOURCE, ENEMY_STARTING_X, ENEMY_STARTING_Y, ENEMY_SPEED, ENEMY_WIDTH, ENEMY_HEIGHT));
-    score += 2;
+    score += 1;
     document.getElementById('score').innerHTML= score;
     if (enemies.length%2 === 0) {
     healthExists = true;
